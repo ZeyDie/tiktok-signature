@@ -5,7 +5,7 @@ WORKDIR /usr
 
 # 1. Install node12
 RUN apt-get update && apt-get install -y curl && \
-    curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+    curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g pm2
 
@@ -50,6 +50,7 @@ RUN apt-get install -y libdbus-glib-1-2 \
 ADD package.json package.json
 ADD package-lock.json package-lock.json
 RUN npm i
+RUN npm install axios
 ADD . .
 
 EXPOSE 8080
